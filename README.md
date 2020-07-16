@@ -1,3 +1,32 @@
+# README
+
+This README would normally document whatever steps are necessary to get your application up and running.
+
+# Runtime
+
+Node.js
+Node Version: v10.14.2
+
+# Language
+
+Type Script
+
+# Framework
+
+Express.js
+
+# Package Manager
+
+yarn
+
+# Scripts to build
+
+yarn build
+
+# Script to run
+
+yarn start
+
 # build docker image and pushed it to docker hub
 
 docker build -t nokia-file-store .
