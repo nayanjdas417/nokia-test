@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nokia-file-store-pod
+spec:
+  containers:
+    - image: nokia-file-store
+      name: nokia-file-store
+      imagePullPolicy: Never
+      resources: {}
+      ports:
+        - containerPort: 3000

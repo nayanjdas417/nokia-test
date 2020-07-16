@@ -1,0 +1,166 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the Swagger Documentation implementation file store to import and export tar files using micro service architecture and deploy minikube environment using docker and Kubernetes tools",
+    "version": "1.0.0",
+    "title": "Nokia File Store",
+    "termsOfService": "",
+    "contact": {
+      "email": "nayandas417@gmail.com"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/file-store",
+  "tags": [
+    {
+      "name": "Nokia File Store",
+      "description": "Nokia File Store"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "post": {
+        "tags": [
+          "File-Store"
+        ],
+        "summary": "Import a file",
+        "description": "Import a tar file into the file system",
+        "operationId": "uploadTarFile",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "file",
+            "description": "register on blockRise",
+            "type": "file",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "CREATED",
+            "schema": {
+              "$ref": "#/definitions/uploadFile"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "File-Store"
+        ],
+        "summary": "Get File list",
+        "description": "Get the tar file list store in the system",
+        "operationId": "getFileList",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "SUCCESS",
+            "schema": {
+              "$ref": "#/definitions/getFileList"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/{fileName}": {
+      "get": {
+        "tags": [
+          "File-Store"
+        ],
+        "summary": "Download a file",
+        "description": "Download a tar file from the system",
+        "operationId": "downloadTarFile",
+        "produces": [
+          "application/x-tar"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "fileName",
+            "description": "Name of the file to pull",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "uploadFile": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "created"
+        },
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "result": {
+          "type": "object",
+          "properties": {
+            "fileName": {
+              "type": "string",
+              "example": "1594916381241.tar"
+            }
+          }
+        }
+      }
+    },
+    "getFileList": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "success"
+        },
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "result": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "1594916381241.tar"
+          }
+        }
+      }
+    }
+  }
+}
