@@ -13,3 +13,8 @@ kubectl create deployment nokia-test --image=<user-name>/nokia-file-store
 kubectl expose deployment nokia-test --type=NodePort --port=3000
 
 minikube service nokia-test --url
+
+# Run api with swagger express ui
+
+hit the following url in browser
+http://localhost:3000/api-docs
