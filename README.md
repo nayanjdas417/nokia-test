@@ -19,7 +19,7 @@ Express.js
 
 yarn
 
-# Scripts to build
+# Script to build
 
 yarn build
 
