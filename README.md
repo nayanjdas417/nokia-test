@@ -27,6 +27,10 @@ yarn build
 
 yarn start
 
+# Run Unit test
+
+yarn test
+
 # build docker image and pushed it to docker hub
 
 docker build -t nokia-file-store .
